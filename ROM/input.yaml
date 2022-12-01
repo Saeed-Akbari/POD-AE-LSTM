@@ -1,0 +1,57 @@
+
+# 'PODAE' mode for training Autoencoder, 'lstm' mode for training lstm after autoencoder,
+# 'PODAEtest' mode for testing autoencoder, 'lstmTest' mode for testing PODAE-LSTM
+mode : 'lstmTest'  #   podAE, podAEtest, lstm, lstmTest
+var : 'theta'         # Psi for modeling streamfunction and theta for modeling temperature
+
+# The entire data set can be larger than training and test set.
+# An arbitrary range can be chosen for training and test set.
+trainStartTime : 0      # training starts from trainStartTime
+trainEndTime : 175        # training ends at trainEndTime
+testStartTime : 120       # test starts from testStartTime
+testEndTime : 200         # test ends at testEndTime
+figTimeTest : [195, 198]  # plot the contours at two points in time
+
+timeStep : 0.5            # afte discarding in the FOM run
+
+POD-AE:
+
+  podContent : True  # True  False
+  podModeContent : 99
+
+  epochsCAE : 5000
+  batchSizeCAE : 8
+  LrateCAE : 1e-5
+  validationAE : 0.2
+  AEmode : 4
+  PODmode : 45        # 2e6 -> 8, 9e6 -> 28, 1e7 -> 45
+  px : 4
+  py : 1
+  numChannel : 1
+  sn : 1
+  cae_seed : 43
+  encoderDenseMLP : [128, 64, 32, 16]   # 1e7 -> [128, 64, 32, 16]
+
+
+  epochsLSTM : 750       # number of epochs  t:0.01 400 300      2e6 -> 180, 9e6 -> 1000
+  batchSizeLSTM : 32     # batch size
+  LrateLSTM : 1e-4        # learning rate
+  validationLSTM : 0.2
+  windowSize : 10          # window size or look back size
+  timeScale : 1          # scaling time step or number of snapshots. the larger timeScale the less snapshots. should be 1
+  lstm_seed : 43            #
+  lx : [6.4, 8.0]          # probe location on x direction for temperature
+  ly : [0.4, 0.6]           # probe location on y direction for temperature
+
+# Data Assimilation Input
+DA:
+
+  n_types : [1, 2, 1]   # [n_act, n_init, n_opt] keys for act_dict, init_dict, opt_dict dictionaries
+  nBlocks : 2
+  numLayer : [20, 20]
+  numLayerA : [20]
+  n_ens : 0
+
+  #act_dict : {1:'tanh',2:'relu',3:tf.keras.layers.LeakyReLU(alpha=0.1)}
+  #init_dict : {1:'uniform',2:'glorot_normal',3:'random_normal'}
+  #opt_dict : {1:'adam',2:'rmsprop',3:'SGD',4:'Adadelta',5:'Adamax'}
