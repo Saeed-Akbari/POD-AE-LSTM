@@ -1,0 +1,9 @@
+# parameters of the lid driven cavity problem
+
+nx : 100     # NXF
+x_l : 0
+x_r : 1
+y_b : 0
+y_t : 1
+ipr : 1
+ips : -1 # 1: Spectral, 2: FST2, 3: FST4, 4: FST4_TDMA, 5: FPS2, 6: FPS4_TDMA

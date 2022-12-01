@@ -1,0 +1,32 @@
+# parameters of the Rayleigh-Benard convection problem
+
+nx : 511     # NXF  511, 63
+ny : 255     # NYF  255, 31
+ra : 2.0e6  # Ra, Rayleigh number 
+pr : 0.7    # Prandtl number
+nt : 600000  # NT, number of time step    100000    2000000
+lx : 2.0    # length of the domain in x-direction
+ly : 1.0    # length of the domain in y-direction
+wc : 0.0     # cold wall temperature
+wh : 1.0     # hot wall temperature
+eps : 1e-9  # convergence tolerance
+isolver : 3 # isolver; [1]arakawa [2] Central-difference [3] compact
+icompact : 1 # [0] if non-compact [1] fourth-order, [2] sixth-order
+ip : 1      # ipoisson; [1]FST [2] MG5
+its : 2     # its; [1]Euler [2] RK3
+nlevel : 5  # MG number of levels
+pmax : 10   # Max. number of iterations
+v1 : 2
+v2 : 2
+v3 : 2
+tolerance : 1e-3 # Tolerance for the Poisson solver
+pfreq : 1 # print frequency
+sfreq : 1 # save frequency
+nsmovie : 100 # number of snapshots for movie
+cfl : 0.9 # CFL (CFL convective stability; e.g., 0.9)
+sigma : 0.25  # sigma (Neumann stability condition; e.g., 0.25)
+tave : 0  # time to start for movie
+tmax : 200  # maximum time  600, 2000, 200
+dt : 0.001  # time step   1e6 -> 0.001  2e6 -> 0.002  4e6 -> 0.003  6e6 -> 0.003  7e6 -> 0.004  9e6 -> 0.004  1e7 -> 0.005
+saveTime : 600  # start saving data from saveTime
+adapT : True  # True for adaptive and False for constant   True  False
