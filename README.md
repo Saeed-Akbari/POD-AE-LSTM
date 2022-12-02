@@ -15,6 +15,5 @@ Details of the numerical schemes are in the paper.
 
 # Building NIROM
 
-
-
-# Citation
+Training and testing the NIROM including POD, AE, and LSTM can be done by running "ROM/PODAE.py" file. Inputs can be specified in "ROM/input.yaml". Variable "mode" in the input file manages training and testing modes for autoencoder and LSTM networks.
+After training some models, the script "ROM/sd.py" gets inputs of the models from "ROM/DAinput/" files and visualizes mean value and $\pm 2$ times of standard deviation.
